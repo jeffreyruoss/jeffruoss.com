@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIN</title>
+</head>
+<body>
+<style>
+    body {
+        background-color: #222;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 20px;
+        font-family: Arial, sans-serif;
+        width: 50%;
+        background-color: #444;
+        color: #fff;
+    }
+
+    table, th, td {
+        border: 1px solid #fff;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #666;
+    }
+
+    tr:nth-child(even) {
+        background-color: #555;
+    }
+
+    .hide-blank-checkbox {
+        display: flex;
+        align-items: center;
+        margin: 20px;
+        border-radius: 10px;
+        background-color: #555;
+        padding: 10px;
+        max-width: 180px;
+    }
+
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        outline: none;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    input[type="checkbox"]:checked:before {
+        opacity: 1;
+    }
+
+    input[type="checkbox"]:focus:before {
+        outline: none;
+        box-shadow: 0 0 2px #fff;
+    }
+</style>
+<div class="hide-blank-checkbox">
+  <input type="checkbox" id="hide-blank" checked>
+  <label for="hide-blank">Hide blank values</label>
+</div>
+<table id="data-table">
+  <thead>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<script>
+  const data = {"ABS":"","ActiveSafetySysNote":"","AdaptiveCruiseControl":"","AdaptiveDrivingBeam":"","AdaptiveHeadlights":"","AdditionalErrorText":"","AirBagLocCurtain":"","AirBagLocFront":"1st Row (Driver and Passenger)","AirBagLocKnee":"","AirBagLocSeatCushion":"","AirBagLocSide":"1st Row (Driver and Passenger)","AutoReverseSystem":"","AutomaticPedestrianAlertingSound":"","AxleConfiguration":"","Axles":"","BasePrice":"","BatteryA":"","BatteryA_to":"","BatteryCells":"","BatteryInfo":"","BatteryKWh":"","BatteryKWh_to":"","BatteryModules":"","BatteryPacks":"","BatteryType":"","BatteryV":"","BatteryV_to":"","BedLengthIN":"","BedType":"","BlindSpotIntervention":"","BlindSpotMon":"","BodyCabType":"Regular","BodyClass":"Pickup","BrakeSystemDesc":"","BrakeSystemType":"Hydraulic","BusFloorConfigType":"Not Applicable","BusLength":"","BusType":"Not Applicable","CAN_AACN":"","CIB":"","CashForClunkers":"","ChargerLevel":"","ChargerPowerKW":"","CoolingType":"","CurbWeightLB":"","CustomMotorcycleType":"Not Applicable","DaytimeRunningLight":"","DestinationMarket":"","DisplacementCC":"3500.0","DisplacementCI":"213.58310433156","DisplacementL":"3.5","Doors":"","DriveType":"4x2","DriverAssist":"","DynamicBrakeSupport":"","EDR":"","ESC":"","EVDriveUnit":"","ElectrificationLevel":"","EngineConfiguration":"V-Shaped","EngineCycles":"","EngineCylinders":"6","EngineHP":"282","EngineHP_to":"","EngineKW":"210.2874","EngineManufacturer":"Ford","EngineModel":"","EntertainmentSystem":"","ErrorCode":"1","ErrorText":"1 - Check Digit (9th position) does not calculate properly","ForwardCollisionWarning":"","FuelInjectionType":"","FuelTypePrimary":"Gasoline","FuelTypeSecondary":"","GCWR":"","GCWR_to":"","GVWR":"Class 2E: 6,001 - 7,000 lb (2,722 - 3,175 kg)","GVWR_to":"","KeylessIgnition":"","LaneCenteringAssistance":"","LaneDepartureWarning":"","LaneKeepSystem":"","LowerBeamHeadlampLightSource":"","Make":"FORD","MakeID":"460","Manufacturer":"FORD MOTOR COMPANY","ManufacturerId":"976","Model":"F-150","ModelID":"1801","ModelYear":"2016","MotorcycleChassisType":"Not Applicable","MotorcycleSuspensionType":"Not Applicable","NCSABodyType":"","NCSAMake":"","NCSAMapExcApprovedBy":"","NCSAMapExcApprovedOn":"","NCSAMappingException":"","NCSAModel":"","NCSANote":"","NonLandUse":"","Note":"","OtherBusInfo":"","OtherEngineInfo":"Ti-VCT","OtherMotorcycleInfo":"","OtherRestraintSystemInfo":"","OtherTrailerInfo":"","ParkAssist":"","PedestrianAutomaticEmergencyBraking":"","PlantCity":"KANSAS CITY","PlantCompanyName":"Kansas City","PlantCountry":"UNITED STATES (USA)","PlantState":"MISSOURI","PossibleValues":"","Pretensioner":"","RearAutomaticEmergencyBraking":"","RearCrossTrafficAlert":"","RearVisibilitySystem":"","SAEAutomationLevel":"","SAEAutomationLevel_to":"","SeatBeltsAll":"Manual","SeatRows":"","Seats":"","SemiautomaticHeadlampBeamSwitching":"","Series":"","Series2":"","SteeringLocation":"","SuggestedVIN":"","TPMS":"Direct","TopSpeedMPH":"","TrackWidth":"","TractionControl":"","TrailerBodyType":"Not Applicable","TrailerLength":"","TrailerType":"Not Applicable","TransmissionSpeeds":"","TransmissionStyle":"","Trim":"","Trim2":"","Turbo":"","VIN":"1ftmf1c88gkf35277","ValveTrainDesign":"","VehicleDescriptor":"1FTMF1C8*GK","VehicleType":"TRUCK ","WheelBaseLong":"","WheelBaseShort":"","WheelBaseType":"","WheelSizeFront":"","WheelSizeRear":"","Wheels":"","Windows":""}
+
+  const dataTable = document.getElementById("data-table");
+  const tbody = dataTable.querySelector("tbody");
+
+  for (const key in data) {
+    const tr = document.createElement("tr");
+
+    const tdKey = document.createElement("td");
+    tdKey.textContent = key;
+    tr.appendChild(tdKey);
+
+    const tdValue = document.createElement("td");
+    tdValue.textContent = data[key];
+    tr.appendChild(tdValue);
+
+    tbody.appendChild(tr);
+  }
+
+  const hideBlankCheckbox = document.getElementById("hide-blank");
+  hideBlankCheckbox.addEventListener("change", () => {
+    const checked = hideBlankCheckbox.checked;
+    for (const tr of tbody.querySelectorAll("tr")) {
+      const tdValue = tr.querySelector("td:nth-child(2)");
+      if (checked && tdValue.textContent === "") {
+        tr.style.display = "none";
+      } else {
+        tr.style.display = "";
+      }
+    }
+  });
+
+  hideBlankCheckbox.dispatchEvent(new Event("change"));
+</script>
+</body>
+</html>
