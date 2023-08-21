@@ -76,7 +76,6 @@ body {
     height: 100%;
     z-index: -1;
 }
-
 h1 {
     font-size: 25vw;
     line-height: 22vw;
@@ -85,8 +84,9 @@ h1 {
 }
 @media (min-width: 1024px) {
     h1 {
-        font-size: 20vw;
-        line-height: 18vw;
+        margin-top: 5rem;
+        font-size: 15vw;
+        line-height: 10vw;
     }
 }
 .social {
