@@ -1,3 +1,4 @@
 jeffruoss.local.crt
 jeffruoss.local.key
 .idea/
+deploy.sh
